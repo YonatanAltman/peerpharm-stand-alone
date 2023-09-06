@@ -1,0 +1,33 @@
+{
+  "name": "peerpharm-stand-alone-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/peerpharm-stand-alone-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/peerpharm-stand-alone-e2e/cypress.config.ts",
+        "devServerTarget": "peerpharm-stand-alone:serve:development",
+        "testingType": "e2e"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "peerpharm-stand-alone:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "peerpharm-stand-alone:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/peerpharm-stand-alone-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["peerpharm-stand-alone"]
+}
