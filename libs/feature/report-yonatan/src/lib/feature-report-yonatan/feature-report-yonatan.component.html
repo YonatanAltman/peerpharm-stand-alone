@@ -1,0 +1,19 @@
+<h2>{{title}}</h2>
+
+
+<div class="search">
+  <input type="text">
+</div>
+<div class="num">{{num}}</div>
+<div class="table">
+  <peerpharm-stand-alone-report-table
+  [columnDefs]="columnDefs"
+  [rowData]="data$|async"
+  >
+  </peerpharm-stand-alone-report-table>
+</div>
+
+
+<div class="footer">
+...
+</div>
